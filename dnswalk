@@ -232,8 +232,8 @@ sub check_zone {
 	    }
 	    elsif ($opt_F && !&equal($name,$rr->name)) {
 		# Filter out "hostname-something" (like "neptune-le0")
-		if (index(split (/\./, $rr->name, 2) . "-", 
-			    split (/\./, $name, 2)) == -1 ) {
+		if (index((split (/\./, $rr->name, 2))[0] . "-", 
+			    (split (/\./, $name, 2))[0]) == -1 ) {
 			&printerr("WARN", $rr->name ." A ". 
 			    $rr->address .": points to $name\n") 
 			    if ((split(/\./,$name))[0] ne "localhost");
